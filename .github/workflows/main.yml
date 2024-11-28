@@ -1,0 +1,35 @@
+on: pull_request
+
+jobs:
+  main:
+    permissions:
+      pull-requests: write
+    runs-on: ubuntu-latest
+    name: My workflow
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
+        with:
+          enable-cache: true
+
+      - name: Spell check
+        id: spell-check
+        run: |
+          status=0
+          echo "### :warning: Spell check failed" > typos-output
+          uv run typos >> typos-output || status=$?
+          if [[ ${status} -ne 0 ]]; then
+            echo "failed=true" >> "${GITHUB_OUTPUT}"
+            exit 0
+          fi
+          exit ${status}
+
+      - name: Spell check comment
+        uses: thollander/actions-comment-pull-request@v3
+        with:
+          comment-tag: spell-check-failed-comment
+          file-path: typos-output
+          mode: ${{ steps.spell-check.outputs.failed == 'true' && 'upsert' || 'delete' }}

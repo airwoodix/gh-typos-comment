@@ -1,0 +1,9 @@
+[project]
+name = "gh-typos-comment"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "typos>=1.28.1",
+]
