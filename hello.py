@@ -1,5 +1,5 @@
 def main():
-    print("receive")
+    print("recieve")
 
 
 if __name__ == "__main__":
