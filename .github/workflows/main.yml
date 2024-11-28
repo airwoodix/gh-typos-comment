@@ -20,7 +20,7 @@ jobs:
         run: |
           status=0
           echo "### :warning: Spell check failed" > typos-output
-          uv run typos >> typos-output || status=$?
+          uv run typos --format brief >> typos-output || status=$?
           if [[ ${status} -ne 0 ]]; then
             echo "failed=true" >> "${GITHUB_OUTPUT}"
             exit 0
