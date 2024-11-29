@@ -1,6 +1,6 @@
 def main():
-    print("recieve")
+    print("receive")
 
 
 if __name__ == "__main__":
-    main()  # recieve moer adn more
+    main()  # receive more and more
