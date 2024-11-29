@@ -3,7 +3,7 @@ name: PR comments
 on:
   workflow_run:
     workflows:
-      - My workflow
+      - CI jobs
     types:
       - completed
 
