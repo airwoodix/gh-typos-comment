@@ -3,4 +3,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()  # recieve moer adn more
+    main()  # recieve moer
